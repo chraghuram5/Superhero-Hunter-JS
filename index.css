@@ -1,0 +1,36 @@
+.search-box-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+body{
+    background-image: url('https://wallpapercave.com/wp/ZaHQ4Jf.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;  
+    background-size: cover;
+}
+.search-box-container .input-group{
+    width: 40%;
+}
+
+.search-results-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-results-container .card{
+    width: 40%;
+    border: none;
+}
+
+img{
+    max-height: 100%;
+}
+
+.input-group-text{
+    cursor: pointer;
+}
+
