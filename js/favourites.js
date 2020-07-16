@@ -30,7 +30,6 @@
 
             //search element by Id
             async function searchById(id) {
-                console.log("search by id called");
                 try {
                     const superhero = await fetch(`https://superheroapi.com/api.php/2320860311550541/${id}`);
                     const data = await superhero.json();

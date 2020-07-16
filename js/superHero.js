@@ -3,10 +3,8 @@ async function searchById(id) {
     try {
         const superhero = await fetch(`https://superheroapi.com/api.php/2320860311550541/${id}`);
         const data = await superhero.json();
-        console.log(data);
         if (data.response === "success") {
             const results = data;
-            console.log(results);
             renderSearch(results);
         }
     }
@@ -16,7 +14,6 @@ async function searchById(id) {
 }
 
 function renderSearch(results) {
-        console.log("called render");
         let superHero=results;
         let searchResultsContainer="";
         
@@ -55,7 +52,6 @@ function getQueryParameter() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const id = urlParams.get('id');
-    console.log(id);
     searchById(id);
 }
 
