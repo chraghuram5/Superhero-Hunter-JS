@@ -42,7 +42,7 @@ function renderSearch(results) {
                                                 </div>
                                                 <ul class="list-group list-group-flush">
                                                     <li class="list-group-item"><div>alignment</div><div>${superHero.biography["alignment"]}</div></li>
-                                                    <li class="list-group-item"><div>first-appearance</div><div>${superHero.biography["alter-egos"]}</div></li>
+                                                    <li class="list-group-item"><div>first-appearance</div><div>${superHero.biography["first-appearance"]}</div></li>
                                                     <li class="list-group-item"><div>full-name</div><div>${superHero.biography["full-name"]}</div></li>
                                                     <li class="list-group-item"><div>place-of-birth</div><div>${superHero.biography["place-of-birth"]}</div></li>
                                                 </ul>
