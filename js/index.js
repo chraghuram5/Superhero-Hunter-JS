@@ -8,9 +8,8 @@ if (window.localStorage.getItem("favourites")) {
     favourites = JSON.parse(localStorage.getItem("favourites"));
 }
 
-//Event Listeners
-function eventListeners() {
-
+//Event listeners for keypress and click
+function eventListenerKeys(){
     //event listener for Enter key
     searchButton[0].addEventListener('click', function(e){
         searchByName(searchBox[0].value);
@@ -23,6 +22,10 @@ function eventListeners() {
         //eventListenerMethod();
         e.stopPropagation();
     });
+}
+
+//Event Listeners for buttons
+function eventListenersButtons() {
 
     //event listeners for buttons
     var buttons = document.getElementsByClassName('btn');
@@ -97,7 +100,7 @@ function renderSearch(results) {
                                     </div>`
     });
     document.getElementsByClassName('search-results-container')[0].innerHTML = searchResultsContainer;
-    eventListeners();
+    eventListenersButtons();
 }
 
-eventListeners();
+eventListenerKeys();
