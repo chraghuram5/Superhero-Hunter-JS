@@ -2,83 +2,19 @@
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <link rel="stylesheet" href="favourites.css">
+        <link rel="stylesheet" href="css/favourites.css">
     </head>
     <body>
-        <h3> <a class="nav-link active" href="index.html">SuperHeroes</a></h3>
+        <!--favourites link-->
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link active" href="index.html">SuperHeroes Home</a>
+        </li>
+    </ul>
+        <!--favourite results-->
         <div class="row row-cols-1 row-cols-md-3">
         </div>
-        <script>
-
-            //main function for favourites
-            function favouritesFunction() {
-                    let favourites = JSON.parse(localStorage.getItem("favourites"));
-                    if(favourites.length==0){
-                        document.getElementsByClassName('row')[0].innerHTML = '<h5 style="text-align: center">NO FAVOURITES ADDED</h5>';
-                        return;
-                    }
-                    document.getElementsByClassName('row')[0].innerHTML = "";
-                    for (let i = 0; i < favourites.length; i++) {
-                        searchById(favourites[i]);
-                    }
-                }
-
-                //handle event listeners
-                function eventListenerMethod() {
-                    var buttons = document.getElementsByClassName('btn');
-                    for (let i = 0; i < buttons.length; i++) {
-                        buttons[i].addEventListener('click', function (e) {
-                            e.preventDefault();
-                            let id = buttons[i].id;
-                            favourites = JSON.parse(localStorage.getItem("favourites"));
-                            var indextobeDeleted = favourites.indexOf(id);
-                            favourites.splice(indextobeDeleted, 1);
-                            window.localStorage.setItem("favourites", JSON.stringify(favourites));
-                            favouritesFunction();
-                        })
-                    }
-                }
-
-                //search element by Id
-                async function searchById(id) {
-                    console.log("search by id called");
-                    try {
-                        const superhero = await fetch(`https://superheroapi.com/api.php/2320860311550541/${id}`);
-                        const data = await superhero.json();
-                        console.log(data);
-                        if (data.response === "success") {
-                            renderFavourites(data);
-                        }
-                    }
-                    catch (error) {
-                        console.log(error);
-                    }
-                }
-        
-        //render favourites
-        function renderFavourites(favouriteHero) {
-            let favouritesResults=document.getElementsByClassName('row')[0].innerHTML;
-                favouritesResults+=`<div class="card bg-dark text-white">
-                                        <div class="col mb-4">
-                                            <img src="${favouriteHero.image.url}" class="card-img-top" alt="...">                                        
-                                            <div class="card-img-overlay">
-                                                <ul class="list-group list-group-flush">
-                                                <h1 class="card-title text-center bg-info">${favouriteHero.name}</h1>
-                                                <h3 class="card-title text-center">strength: ${favouriteHero.powerstats.speed}</h3>
-                                                <h3 class="card-title text-center">strength: ${favouriteHero.powerstats.durability}</h3>
-                                                <h3 class="card-title text-center">strength: ${favouriteHero.powerstats.power}</h3>
-                                                <h3 class="card-title text-center">strength: ${favouriteHero.powerstats.intelligence}</h3>
-                                                <a href="#" class="btn btn-primary" id="${favouriteHero.id}">Remove from Favourites</div></a>
-                                                </ul>
-                                            </div>        
-                                        </div>                                       
-                                    </div>`
-            document.getElementsByClassName('row')[0].innerHTML = favouritesResults;
-            eventListenerMethod();
-        }
-
-
-        favouritesFunction();
+        <script src="js/favourites.js">
         </script>
     </body>
 </html>
